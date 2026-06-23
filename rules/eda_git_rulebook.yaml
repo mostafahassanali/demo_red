@@ -1,0 +1,33 @@
+---
+- name: Deploy infra when commit message contains "deploy"
+  hosts: all
+
+  ## sources: where events come from.
+  ## With Event Streams (recommended on AAP 2.5/2.6), use the eda.builtin.webhook
+  ## source bound to the Event Stream you create in the UI — EDA handles the
+  ## HTTP server, auth, and routing for you; the source below just receives
+  ## what the Event Stream forwards.
+  sources:
+    - ansible.eda.webhook:
+        name: github_commit_listener
+        # If using a raw activation (not bound to an Event Stream), you'd set
+        # host/port/token/hmac_secret here directly. With Event Streams, these
+        # are managed by the platform and you can omit host/port.
+
+  rules:
+    - name: Launch deploy infra job on "deploy" keyword in commit message
+      condition: >-
+        event.payload.commits is defined and
+        event.payload.commits | selectattr('message', 'search', 'deploy') | list | length > 0
+
+      action:
+        run_job_template:
+          name: "deploy infra"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              triggered_by: "test1"
+              commit_sha: "{{ event.payload.head_commit.id | default('unknown') }}"
+              commit_message: "{{ event.payload.head_commit.message | default('') }}"
+              repository: "{{ event.payload.repository.full_name | default('') }}"
+              pusher: "{{ event.payload.pusher.name | default('') }}"
