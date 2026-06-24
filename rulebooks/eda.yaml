@@ -21,7 +21,7 @@
         
       action:
         run_job_template:
-          name: "deploy infra"
+          name: "test1"
           organization: "Default"
           job_args:
             extra_vars:
