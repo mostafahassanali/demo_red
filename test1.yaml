@@ -3,5 +3,5 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: Run shell
+    - name: Run shell command
       ansible.builtin.shell: "ansible --version"
