@@ -2,7 +2,7 @@
 - name: Deploy infra when commit message contains "deploy"
   hosts: all
 
-  ## sources: where events come from.
+  ## sources: where events come om.
   ## With Event Streams (recommended on AAP 2.5/2.6), use the eda.builtin.webhook
   ## source bound to the Event Stream you create in the UI — EDA handles the
   ## HTTP server, auth, and routing for you; the source below just receives
