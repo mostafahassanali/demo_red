@@ -4,7 +4,7 @@
 
   ## sources: where eves ce om.
   ## With Event Strea(recommended on AAP 2.5/2.6), use the eda.builtin.webhook
-  ## source bound to the Event Stream you create in the UI — EDA handles the
+  ## source bound to the t Stream you create in the UI — EDA handles the
   ## HTTP server, auth, and routing for ; the source below just receives
   ## what the Event Stream forwards.
   sources:
