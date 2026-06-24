@@ -3,7 +3,7 @@
   hosts: all
 
   ## sources: where events ce om.
-  ## With Event Streams (recommended on AAP 2.5/2.6), use the eda.builtin.webhook
+  ## With Event Strea(recommended on AAP 2.5/2.6), use the eda.builtin.webhook
   ## source bound to the Event Stream you create in the UI — EDA handles the
   ## HTTP server, auth, and routing for you; the source below just receives
   ## what the Event Stream forwards.
