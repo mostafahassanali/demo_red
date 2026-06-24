@@ -17,7 +17,7 @@
 
   rules:
     - name: Launch deploy infra job on "deploy" keyword in commit message
-      condition: event.payload.object_kind == "push"
+      condition: event.meta.headers["X-GitHub-Event"] == "push"
         
       action:
         run_job_template:
