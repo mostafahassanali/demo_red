@@ -16,10 +16,8 @@
 
   rules:
     - name: Launch deploy infra job on "deploy" keyword in commit message
-      condition: >-
-        event.payload.commits is defined and
-        event.payload.commits | selectattr('message', 'search', 'deploy') | list | length > 0
-
+      condition: event.payload.head_commit.message is regex("(?i)\\bdeploy\\b")
+        
       action:
         run_job_template:
           name: "deploy infra"
