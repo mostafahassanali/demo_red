@@ -17,7 +17,7 @@
 
   rules:
     - name: Launch deploy infra job on "deploy" keyword in commit message
-      condition: event.payload.head_commit.message is search("deploy")
+      condition: event.payload.object_kind == "push"
         
       action:
         run_job_template:
