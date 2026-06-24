@@ -10,6 +10,7 @@
   sources:
     - ansible.eda.webhook:
         name: github_commit_listener
+        port: 5000
         # If using a raw activation (not bound to an Event Stream), you'd set
         # host/port/token/hmac_secret here directly. With Event Streams, these
         # are managed by the platform and you can omit host/port.
