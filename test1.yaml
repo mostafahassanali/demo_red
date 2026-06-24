@@ -1,5 +1,5 @@
 ---
-- name: test
+- name: test eda
   hosts: localhost
   connection: local
   tasks:
